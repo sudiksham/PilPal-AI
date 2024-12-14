@@ -1,0 +1,13 @@
+[Unit]
+Description=Medicine Dispenser API
+After=network.target
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/medicine-dispenser
+Environment="PATH=/home/ubuntu/medicine-dispenser/venv/bin"
+EnvironmentFile=/home/ubuntu/medicine-dispenser/.env
+ExecStart=/home/ubuntu/medicine-dispenser/venv/bin/gunicorn -w 4 -b 0.0.0.0:8000 app:app
+
+[Install]
+WantedBy=multi-user.target
